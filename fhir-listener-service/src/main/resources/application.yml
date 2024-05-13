@@ -1,0 +1,76 @@
+server:
+  servlet:
+    contextPath: ${FHIR_LISTENER_CONTEXT_PATH}
+  port: ${FHIR_LISTENER_PORT}
+
+spring:
+  rabbitmq:
+    host: ${RABBITMQ_HOSTNAME}
+    port: ${RABBITMQ_AMQP_PORT}
+    username: ${RABBITMQ_USER_NAME}
+    password: ${RABBITMQ_USER_PASSWORD}
+  application:
+    name: ${FHIR_LISTENER_APPLICATION_NAME}
+
+  datasource:
+    driverClassName: ${DRIVER_CLASS_NAME}
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+  flyway:
+    locations: classpath:db/migration
+    url: ${DATABASE_URL}
+    user: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    baseline-on-migrate: true
+    out-of-order: true
+    ignore-missing-migrations: true
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        show_sql: false
+        use_sql_comments: true
+        enable_lazy_load_no_trans: true
+  services:
+    fhir-auth-service-base-url: ${FHIR_AUTH_SERVICE_BASE_URL}
+    fhir-user-service-base-url: ${FHIR_USER_SERVICE_BASE_URL}
+    fhir-listener-service-base-url: ${FHIR_LISTENER_SERVICE_BASE_URL}
+    fhir-adapter-service-base-url: ${FHIR_ADAPTER_SERVICE_BASE_URL}
+    fhir-server-base-url: ${HAPI_FHIR_SERVER_BASE_URL}
+    credentials:
+      fhir_accessKeyId: ${FHIR_ACCESS_KEY_ID}
+      fhir_secretKey: ${FHIR_SECRET_ACCESS_KEY}
+app:
+  url: http://localhost
+  swagger-server-url: http://localhost:8085/
+  mail-user: ${MAIL_USER:apikey}
+  page-count: ${PAGE_COUNT:10}
+  login-time-limit-in-hour: ${LOGIN_TIME_LIMIT_IN_HOUR:1}
+  login-count-limit: ${LOGIN_COUNT_LIMIT:5}
+  forgot-password-time-limit-in-minutes: ${FORGOT_PASSWORD_TIME_LIMIT_IN_MINUTES:60}
+  forget-password-count-limit: ${FORGET_PASSWORD_COUNT_LIMIT:5}
+  reset-password-count-limit: ${RESET_PASSWORD_COUNT_LIMIT:5}
+  reset-password-time-limit-in-minutes: ${RESET_PASSWORD_TIME_LIMIT_IN_MINUTES:60}
+  public-key-file-name: ${FHIR_PUBLIC_KEY_FILE_NAME:fhir_public_key.der}
+  private-key-file-name: ${FHIR_PRIVATE_KEY_FILE_NAME:fhir_private_key.der}
+  email-app-url: ${EMAIL_APP_URL}
+
+fhir:
+  log:
+    fileName: ${FHIR_LOG_FILENAME}
+    fileNamePattern: ${FHIR_LOG_FILENAME_PATTERN}
+    consolePattern: ${FHIR_LOG_CONSOLE_PATTERN}
+    filePattern: ${FHIR_LOG_FILE_PATTERN}
+    maxHistory: ${FHIR_LOG_MAX_HISTORY}
+    totalSizeCap: ${FHIR_LOG_TOTAL_SIZE_CAP}
+
+rabbitmq:
+  queue:
+    name: ${RABBITMQ_QUEUE_NAME}
+  exchange:
+    name: ${RABBITMQ_EXCHANGE_NAME}
+  routing:
+    key: ${RABBITMQ_ROUTING_KEY}
