@@ -21,7 +21,7 @@ public class AdapterServiceApplication {
      * The main method that starts the FHIR Adapter Service application.
      *
      * @param args Command-line arguments.
-     *             Author: charan created on August 17, 2023
+     *            Author: charan created on August 17, 2023
      */
     public static void main(String[] args) {
         SpringApplication.run(AdapterServiceApplication.class, args);
