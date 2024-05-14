@@ -1,3 +1,10 @@
+# Fhir-Service-Opensource
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Medtronic-LABS_spice-fhir-adapter&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Medtronic-LABS_spice-fhir-adapter)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Medtronic-LABS_spice-fhir-adapter&metric=coverage)](https://sonarcloud.io/summary/new_code?id=Medtronic-LABS_spice-fhir-adapter)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Medtronic-LABS_spice-fhir-adapter&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Medtronic-LABS_spice-fhir-adapter)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Medtronic-LABS_spice-fhir-adapter&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Medtronic-LABS_spice-fhir-adapter)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Medtronic-LABS_spice-fhir-adapter&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Medtronic-LABS_spice-fhir-adapter)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Medtronic-LABS_spice-fhir-adapter&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Medtronic-LABS_spice-fhir-adapter)
 ## FHIR-ADAPTER-SERVICE
 Together with the essential supporting services, these microservices serve as an 
 adapter. Their primary responsibility is to transform spice data into FHIR standards 
