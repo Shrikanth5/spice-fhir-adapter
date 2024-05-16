@@ -5,10 +5,14 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=Medtronic-LABS_spice-fhir-adapter&metric=bugs)](https://sonarcloud.io/summary/new_code?id=Medtronic-LABS_spice-fhir-adapter)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Medtronic-LABS_spice-fhir-adapter&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Medtronic-LABS_spice-fhir-adapter)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Medtronic-LABS_spice-fhir-adapter&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Medtronic-LABS_spice-fhir-adapter)
-## FHIR-ADAPTER
-Together with the essential supporting services, these microservices serve as an 
-adapter. Their primary responsibility is to transform spice data into FHIR standards 
-before sending it to the FHIR-JPA server.
+## FHIR ADAPTER - Simplified Data Exchange
+`FHIR Powerhouse`: A brand new FHIR (Fast Healthcare Interoperability Resources) adapter bridges the gap between SPICE and this widely used data format. This adapter acts like a translator, effortlessly converting SPICE data into FHIR format.
+
+`Centralized Data Hub`:The converted data is then mapped to corresponding FHIR resources (think data fields) and pushed to a central FHIR database. This creates a central repository for your healthcare information.
+
+`Reaching New Horizons`:The stored FHIR data isn't locked away. It can be easily transferred to DHIS2 (District Health Information System 2) systems used in Africa and Bangladesh. This fosters broader data exchange and accessibility across regions.
+
+`Multilingual Capability`:SPICE now supports multi-language translation for the user interface! This means you can experience SPICE in your preferred language, making it easier than ever to navigate and use the app.
 
 ## Tech stack
 
@@ -163,6 +167,10 @@ RABBITMQ_QUEUE_NAME=spice_rabbitmq_queue
 RABBITMQ_EXCHANGE_NAME=spice_rabbitmq_exchange
 RABBITMQ_ROUTING_KEY=spice_rabitmq_routing_key
 PASSWORD=password
+SOURCE_DATABASE_URL=jdbc:postgresql://example-db-host:5432/example-db?serverTimezone=UTC&stringtype=unspecified
+SOURCE_DATABASE_USERNAME=postgres
+SOURCE_DATABASE_PASSWORD=password
+SOURCE_DATABASE_NAME=example-db
 ```
 
 > Note: The values for the environmental variables should be changed based on the chosen service.
@@ -296,6 +304,17 @@ authentication service.
 `RABBITMQ_ROUTING_KEY`: Routing key used in RabbitMQ.
 
 `PASSWORD`: Password parameter key for security config and the value must be `password`. 
+>Note :
+> The Below properties are used for the sourceDatabase(SPICE-SERVER Database details) configuration.
+`SOURCE_DRIVER_CLASS_NAME`: Specifies the Java driver class name for connecting to the PostgreSQL database.
+
+`SOURCE_DATABASE_URL`: Contains the JDBC URL for connecting to the PostgreSQL database with timezone and string type specified
+
+`SOURCE_DATABASE_USERNAME`: Username used for accessing the PostgreSQL database.
+
+`SOURCE_DATABASE_PASSWORD`: Password for the PostgreSQL user specified.
+
+`SOURCE_DATABASE_NAME`: Name of the PostgreSQL database used by the project.
 
 ## Deployment
 
@@ -410,9 +429,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FHIRResources {
-    public static final String FHIR_URI_REGEX = ".*/fhir/";
-    public static final String ACCESS_KEY_ID_PARAM = "accessKeyId";
-    public static final String SECRET_ACCESS_KEY_PARAM = "secretAccessKey";
+   public static final String FHIR_URI_REGEX = ".*/fhir/";
+   public static final String ACCESS_KEY_ID_PARAM = "<YOUR_ACCESSKEY_ID_HERE>";
+   public static final String SECRET_ACCESS_KEY_PARAM = "YOUR_SECRECT_ACCESS_KEY_HERE>";
    public static final String BACK_SLASH = "/";
    public static final String FHIR = "fhir";
    public static final String ACCESS_KEY_ID_PARAM = "<YOUR_ACCESSKEY_ID_HERE>";
@@ -558,6 +577,7 @@ public class FHIRResources {
    public static final String SUBSTANCE_SPECIFICATION = "SubstanceSpecification";
    public static final String SUPPLY_DELIVERY = "SupplyDelivery";
    public static final String SUPPLY_REQUEST = "SupplyRequest";
+   public static final String SYSTEM_LEVEL_OPERATIONS = "System Level Operations";
    public static final String TASK = "Task";
    public static final String TERMINOLOGY_CAPABILITIES = "TerminologyCapabilities";
    public static final String TEST_REPORT = "TestReport";
@@ -852,12 +872,12 @@ To migrate the user and site use the following API endpoints given below.
 ### SiteMigration endpoint
 
 ``
-GET {{ipAdd}}/fhir-adapter-service/migration/site-migration
+GET {{ipAdd}}/fhir-adapter-service/migration/site-migrate
 ``
 ### UserMigration endpoint
 
 ``
-GET {{ipAdd}}/fhir-adapter-service/migration/user-migration
+GET {{ipAdd}}/fhir-adapter-service/migration/user-migrate
 ``
 # Sample FHIR-Mapping Reference
 

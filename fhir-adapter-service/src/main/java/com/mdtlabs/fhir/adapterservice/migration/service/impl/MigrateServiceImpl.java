@@ -241,6 +241,7 @@ public class MigrateServiceImpl implements MigrationService {
         Logger.logInfo("Total Number of Sites to be inserted into site_fhir_mapping: {}", siteList.size());
         List<Long> allSpiceIds = fhirUserService.findAllSitesIds();
         siteList.forEach(site -> {
+            Logger.logInfo("Total Site from source database: " + site);
             if(!allSpiceIds.contains(site.getId()))   {
                 Organization organization = mapSiteDTOtoOrganization(site);
                 Logger.logInfo("Site to Organization Converted Details {}", organization);

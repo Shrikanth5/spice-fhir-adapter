@@ -16,12 +16,11 @@ public class SpiceUser {
     private Long updatedBy;
     private Date createdAt;
     private Date updatedAt;
-    private Boolean isActive;
+    private boolean isActive;
     private boolean isDeleted;
     private String username;
     private String password;
     private String gender;
-    private boolean active;
     private Date blockedDate;
     private String forgetPasswordToken;
     private Date forgetPasswordTime;

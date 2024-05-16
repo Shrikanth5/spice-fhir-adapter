@@ -40,7 +40,7 @@ public class SqlQueries {
     /**
      * The constant SELECT_SITE_SPICE_QUERY.
      */
-    public static final String SELECT_SITE_SPICE_QUERY = "select state.*, country.name as country_name, sub_county.name as sub_county_name from site as state inner join country as country on state.country_id = country.id inner join county as county on county.id = state.county_id inner join sub_county as sub_county on sub_county.id = state.sub_county_id order by state.id asc";
+    public static final String SELECT_SITE_SPICE_QUERY = "select state.*, country.name as country_name, sub_county.name as sub_county_name, state.is_active as active from site as state inner join country as country on state.country_id = country.id inner join county as county on county.id = state.county_id inner join sub_county as sub_county on sub_county.id = state.sub_county_id order by state.id asc";
     /**
      * The constant INSERT_QUERY_FOR_SITE_FHIR_MAPPING.
      */
